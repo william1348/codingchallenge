@@ -1,12 +1,12 @@
 package com.example.codingchallenge.data.model
 
-// actual usable card object after parsing API response
+// usable card object after parsing API response
 data class CardItem(
-    var type: CARD_TYPE,
-    var value: String? = null,
-    var title: Title? = null,
-    var description: Description? = null,
-    var image: Image? = null,
-    var fontColor: String? = null,
-    var fontSize: Int? = null
+    var type: CARD_TYPE, // text, title, or image
+    var value: String? = null, // non-null for text
+    var title: Title? = null, // non-null for title or image
+    var description: Description? = null, // non-null for title or image
+    var image: Image? = null, // non-null for image only
+    var fontColor: String? = null, // text only
+    var fontSize: Int? = null // text only
 )

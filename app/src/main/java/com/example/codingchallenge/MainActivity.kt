@@ -79,6 +79,7 @@ fun HomeList(homeViewModel: HomeViewModel) {
 
     if (cards.value.isEmpty()) {
         // Placeholder, message, or loading screen if there are no items
+        // Could use a sealed class for Loading States
         Text("Loading Items")
     } else {
         LazyColumn(modifier = Modifier.fillMaxSize()) {

@@ -1,6 +1,5 @@
 package com.example.codingchallenge.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.codingchallenge.data.model.CARD_TYPE
@@ -25,26 +24,19 @@ class HomeViewModel @Inject constructor(
 
     fun fetchData() {
         viewModelScope.launch {
-            Log.d("@@@", " fetch data 1")
             var result = repository.getData()
             parseCards(result.getOrNull())
-
-            //     Log.d("@@@", " reseult  " + result.getOrNull()?.page?.cards?.size)
-//            when(val result = repository.getData()) {
-//                is result.is-> data.postValue(result.data)
-//                is Result.frror -> error.postValue(result.exception.message)
-//            }
         }
     }
 
+
+    // transform data from api into a usable CardItem object
     private fun parseCards(data: HomePageModel?) {
         data?.let {
             val cardList = mutableListOf<CardItem>()
             it.page.cards.forEach { card ->
-                Log.d("@@@", " card type " + card.type)
                 when (card.type) {
                     TEXT -> {
-                        Log.d("@@@", " add here")
                         cardList.add(
                             CardItem(
                                 type = CARD_TYPE.TEXT,
@@ -78,7 +70,6 @@ class HomeViewModel @Inject constructor(
 
                 }
             }
-            Log.d("@@@", " here cardlist size " + cardList.size)
             if (cardList.isNotEmpty()) {
                 _cards.value = cardList
             }
