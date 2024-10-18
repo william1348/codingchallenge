@@ -25,8 +25,7 @@ data class Card(
 
 data class Title(
     var value: String,
-    var attributes: Attributes,
-    var font: Font
+    var attributes: Attributes
 )
 
 data class Description(
@@ -50,8 +49,8 @@ data class Image(
 )
 
 data class Size(
-    var width: String,
-    var height: String
+    var width: Int,
+    var height: Int
 )
 
 enum class CARD_TYPE {
